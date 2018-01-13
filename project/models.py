@@ -25,6 +25,7 @@ class ItemLost(models.Model):
 	Updated					= models.DateTimeField(auto_now=True)
 	Owner 					= models.ForeignKey('OwnerInfo', on_delete=models.SET_NULL, null=True)
 	Returned				= models.BooleanField(default=False)
+	Returner                = models.ForeignKey('ReturnerInfo', on_delete=models.SET_NULL, null=True)
 	slug					= models.SlugField(null=True, blank=True)
 	
 	def __str__(self):
