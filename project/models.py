@@ -15,14 +15,16 @@ class ItemLost(models.Model):
 	User					= models.ForeignKey(User)
 	Category				= models.CharField(max_length=120)
 	Item_name				= models.CharField(max_length=120)
-	item_picture			= models.ImageField(upload_to = 'static/media')#, default = 'pic_folder/None/no-img.jpg')
+	item_picture			= models.ImageField(upload_to="Item_Lost", blank=True, null=True)
 	Item_description 		= models.TextField(help_text='Item Description', null=True, blank=True)
 	Lost_place				= models.CharField(max_length=120) 
 	Date_Lost				= models.DateTimeField(auto_now_add=True)
-	Value 					=  models.DecimalField('Peso amount', max_digits=8, decimal_places=2, blank=True, null=True)
+	Value 					= models.DecimalField('Peso amount', max_digits=8, decimal_places=2, blank=True, null=True)
 	Time_lost				= models.DateTimeField(auto_now_add=True)
 	Updated					= models.DateTimeField(auto_now=True)
 	Owner 					= models.ForeignKey('OwnerInfo', on_delete=models.SET_NULL, null=True)
+	Returned				= models.BooleanField(default=False)
+	slug					= models.SlugField(null=True, blank=True)
 	
 	def __str__(self):
 		return self.Item_name
