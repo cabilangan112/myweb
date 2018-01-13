@@ -1,0 +1,37 @@
+Case ID
+Report ID
+Lost/found
+Description
+Detail Description
+Date Lost
+Time
+Place Lost
+Value
+
+
+Owner contact Info
+Staff Member
+Contact alter
+Name
+Address
+City
+Phone
+Remarks
+
+
+
+
+Dispose of Found Items
+
+Case ID
+report Date
+Item
+Description
+Value
+Found Date
+Found Place
+Staff
+Name
+Address
+Phone
+Remarks
