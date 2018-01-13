@@ -6,6 +6,8 @@ from django.conf import settings
 from django.db import models
 from django.db.models.signals import pre_save
 from django.core.urlresolvers import reverse
+from datetime import date
+from datetime import time
 #from locations.utils import unique_slug_generator
 #from locations.models import Location
 User = settings.AUTH_USER_MODEL
@@ -15,12 +17,11 @@ class ItemLost(models.Model):
 	User					= models.ForeignKey(User)
 	Category				= models.CharField(max_length=120)
 	Item_name				= models.CharField(max_length=120)
-	item_picture			= models.ImageField(upload_to="Item_Lost", blank=True, null=True)
+	item_picture			= models.ImageField(upload_to="Item", blank=True, null=True)
 	Item_description 		= models.TextField(help_text='Item Description', null=True, blank=True)
-	Lost_place				= models.CharField(max_length=120) 
-	Date_Lost				= models.DateTimeField(auto_now_add=True)
+	Location                = models.ForeignKey('LocationLost', on_delete=models.SET_NULL, null=True)
 	Value 					= models.DecimalField('Peso amount', max_digits=8, decimal_places=2, blank=True, null=True)
-	Time_lost				= models.DateTimeField(auto_now_add=True)
+	Time					= models.DateTimeField(auto_now_add=True)
 	Updated					= models.DateTimeField(auto_now=True)
 	Owner 					= models.ForeignKey('OwnerInfo', on_delete=models.SET_NULL, null=True)
 	Returned				= models.BooleanField(default=False)
@@ -30,7 +31,7 @@ class ItemLost(models.Model):
 		return self.Item_name
 
 	class Meta:
-		ordering = ['-Updated', '-Time_lost']
+		ordering = ['-Updated', '-Time']
 
 	def get_item(self):
 		return self.item_description.split(",")
@@ -52,7 +53,7 @@ pre_save.connect(rl_pre_save_receiver, sender=ItemLost)
 class OwnerInfo(models.Model):
 	Last_name 				= models.CharField(max_length=120)
 	First_name 				= models.CharField(max_length=120)
-	Course     				= models.CharField(max_length=120)
+	Course_or_Stran    		= models.CharField(max_length=120)
 	Year 					= models.CharField(max_length=120)
 	
 	def get_absolute_url(self):
@@ -60,7 +61,29 @@ class OwnerInfo(models.Model):
 
 	def __str__(self):
 		return '%s, %s' % (self.Last_name, self.First_name)
+		
+class LocationLost(models.Model):
+	Lost_place				= models.CharField(max_length=120) 
+	Date_Lost				= models.DateField(default=date.today)
+	Time_lost				= models.TimeField(null=True, blank=True)
+	
+	
+	def get_absolute_url(self):
+		return reverse(' locationlost-detail', args=[str(self.id)])
 
+	def __str__(self):
+		return '%s, %s' % (self.Lost_place, self.Date_Lost)
+		
+		
+class ReturnerInfo(models.Model):
+	Last_name 				= models.CharField(max_length=120)
+	First_name 				= models.CharField(max_length=120)
+	Course_or_Stran     	= models.CharField(max_length=120)
+	Year 					= models.CharField(max_length=90)
 	
-	
+	def get_absolute_url(self):
+		return reverse(' Returner-detail', args=[str(self.id)])
+
+	def __str__(self):
+		return '%s, %s' % (self.Last_name, self.First_name)
 	
