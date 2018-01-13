@@ -19,8 +19,8 @@ class ItemLost(models.Model):
 	Item_description 		= models.TextField(help_text='Item Description', null=True, blank=True)
 	Lost_place				= models.CharField(max_length=120) 
 	Date_Lost				= models.DateTimeField(auto_now_add=True)
-	Value 					= models.IntegerField(null=True)
-	Timestamp				= models.DateTimeField(auto_now_add=True)
+	Value 					=  models.DecimalField('Peso amount', max_digits=8, decimal_places=2, blank=True, null=True)
+	Time_lost				= models.DateTimeField(auto_now_add=True)
 	Updated					= models.DateTimeField(auto_now=True)
 	Owner 					= models.ForeignKey('OwnerInfo', on_delete=models.SET_NULL, null=True)
 	
@@ -28,7 +28,7 @@ class ItemLost(models.Model):
 		return self.Item_name
 
 	class Meta:
-		ordering = ['-Updated', '-Timestamp']
+		ordering = ['-Updated', '-Time_lost']
 
 	def get_item(self):
 		return self.item_description.split(",")
