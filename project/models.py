@@ -81,6 +81,7 @@ class ReturnerInfo(models.Model):
 	First_name 				= models.CharField(max_length=120)
 	Course_or_Stran     	= models.CharField(max_length=120)
 	Year 					= models.CharField(max_length=90)
+	Email                   = models.EmailField(max_length=90)
 	
 	def get_absolute_url(self):
 		return reverse(' Returner-detail', args=[str(self.id)])

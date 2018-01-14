@@ -6,7 +6,15 @@ from django.contrib import admin
 from .models import ItemLost, OwnerInfo, LocationLost,ReturnerInfo
 
 # Register your models here.
-admin.site.register(ItemLost)
+
+class ItemLostAdmin(admin.ModelAdmin):
+    list_display = ('Item_name', 'Category', 'item_picture', 'Item_description','Location','Value','Time','Updated',)
+
+	
+	
+	
+	
+admin.site.register(ItemLost,ItemLostAdmin)
 admin.site.register(OwnerInfo)
 admin.site.register(LocationLost)
 admin.site.register(ReturnerInfo)
