@@ -8,8 +8,8 @@ from django.shortcuts import render
 from models import ItemLost, OwnerInfo,LocationLost,ReturnerInfo
 from django.views.generic import (ListView,DetailView,CreateView,UpdateView)
 
-# Create your views here.
-class HomeView(ListView):
+ 
+class indexView(ListView):
 	def get(self, request, *args, **kwargs):
 		if not request.user.is_authenticated():
 			return render(request, "index", {})
@@ -25,11 +25,3 @@ class ReturnedView(ListView):
 		return render(request, " ", {'object_list':qs})
 		
 		
-class ItemLostView(generic.ListView):
-	def get(self, request): 
-		items = ItemLost.objects.all()
-		context = {
-			'items':items,
-		
-		}
-		return render(request, "list_lost.html", context)
