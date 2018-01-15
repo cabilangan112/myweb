@@ -1,22 +1,19 @@
  
  
 
- 
-
 <form class='form' method='GET' action='.'>
 	<input type='text' placeholder='Search..' name='Item_name' value='{{ request.GET.Item_name }}'>
 	<button class='btn btn-default' type='submit'>Search</button>
 </form>
-
  
 <ul>
 	{% for Item in LItem %}
 		 
-			<p><img src="{{ LItem.MEDIA_URL }}{{ LItem.item_picture.url }}" width="259px"></p>
-			<p>Item name: {{ Item.Category }}</p>
-			<p>Detail Item: {{ Item.Item_name }}</p>
+			<p><img src="{{ Item.item_picture }}{{ Item.item_picture.url}}" width="259px"></p>
+			<p>Item Category: {{ Item.Category }}</p>
+			<p>Item Name: {{ Item.Item_name }}</p>
 			<p>{% if form.instance.Returned %}Claimed by {{ LItem.Returner.Last_name }}{% else %}Returned Yet{% endif %}</p>
-			<small>{{ LItem.category }} Time published: {{ LItem.Time }} Updated {{ LItem.Updated|timesince }} ago</small>
+			<small>{{ Item.category }} Time published: {{ Item.Time }} Updated {{ Item.Updated|timesince }} ago</small>
 	
 		</li>
 

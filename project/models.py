@@ -8,8 +8,8 @@ from django.db.models.signals import pre_save
 from django.core.urlresolvers import reverse
 from datetime import date
 from datetime import time
-#from locations.utils import unique_slug_generator
-#from locations.models import Location
+ 
+ 
 User = settings.AUTH_USER_MODEL
 
 
