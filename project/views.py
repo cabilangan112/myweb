@@ -20,7 +20,7 @@ class indexView(ListView):
 class ReturnedView(ListView):
 	def get(self, request, *args, **kwargs):
 		if not request.user.is_authenticated():
-			return render(request, "home.html", {})
+			return render(request, "index.html", {})
 		qs = ItemLost.objects.filter(Returned=True).order_by("-updated")[:10]
 		return render(request, " ", {'object_list':qs})
 		
