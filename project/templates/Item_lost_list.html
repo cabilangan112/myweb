@@ -1,25 +1,36 @@
  
- 
-
-<form class='form' method='GET' action='.'>
-	<input type='text' placeholder='Search..' name='Item_name' value='{{ request.GET.Item_name }}'>
+ <body >
+<br><br>
+<form align="right" class='form' method='GET' action='.'>
+	<input type='text' placeholder='Search..' name='q' value='{{ request.GET.q }}'>
 	<button class='btn btn-default' type='submit'>Search</button>
-</form>
+</form>	
+<br><br>
  
 <ul>
-	{% for Item in LItem %}
-		 
-			<p><img src="{{ Item.item_picture }}{{ Item.item_picture.url}}" width="259px"></p>
-			<p>Item Category: {{ Item.Category }}</p>
-			<p>Item Name: {{ Item.Item_name }}</p>
-			<p>{% if form.instance.Returned %}Claimed by {{ LItem.Returner.Last_name }}{% else %}Returned Yet{% endif %}</p>
-			<small>{{ Item.category }} Time published: {{ Item.Time }} Updated {{ Item.Updated|timesince }} ago</small>
+	{% for obj in obj %}
 	
-		</li>
+ <div class="card" align="center">
+		<div> 
+		<frame> <p>{{ obj.User}} <small>  {{ obj.Updated|timesince }} ago</small></p>
+		<div>
+		<p><img src="{{ obj.MEDIA_URL }}{{ obj.item_picture.url }}" width="240px"></p>
+		<p>Item Category: {{ obj.Category }}</p>
+			<p>Item Name: 	 {{ obj.Item_name }}</p>
+			<p>Item Description: {{ obj.Item_description  }}</p>
+			<p>Lost Place: 		 {{ obj.Location.Lost_place }}</p>
+			<p>Lost Time & Date: {{ obj.Location.Time_lost }}  {{ obj.Location.Date_Lost }}</p>
+			<p>Owner :                 {{ obj.Owner.Last_name }} {{ obj.Owner.First_name }} {{ obj.Owner.Course_or_Stran }}   {{ obj.Owner.Year }}</p>
+</frame>
+			<br><br>
+			<br><br>
+		</div>
+		
 
 	{% empty %}
 		 
 
 	{% endfor %}	
 </ul>
+<body>
  	

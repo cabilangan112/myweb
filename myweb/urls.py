@@ -25,4 +25,4 @@ urlpatterns = [
 	url(r'^admin/', admin.site.urls),
 	url(r'^Itemlost/', include('project.urls')),
 	url(r'^accounts/',include('django.contrib.auth.urls')),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
