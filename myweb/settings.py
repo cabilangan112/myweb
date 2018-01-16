@@ -127,6 +127,3 @@ MEDIA_URL = '/media/media/'
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'templates','static'),
-)

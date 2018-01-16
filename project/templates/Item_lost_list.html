@@ -1,4 +1,5 @@
- 
+{% extends "base.html" %}
+{% block content %} 
  <body >
 <br><br>
 <form align="right" class='form' method='GET' action='.'>
@@ -14,7 +15,7 @@
 		<div> 
 		<frame> <p>{{ obj.User}} <small>  {{ obj.Updated|timesince }} ago</small></p>
 		<div>
-		<p><img src="{{ obj.MEDIA_URL }}{{ obj.item_picture.url }}" width="240px"></p>
+		<p><img src="{{ obj.MEDIA_URL }}{{ obj.item_picture.url }}" width="300px"></p>
 		<p>Item Category: {{ obj.Category }}</p>
 			<p>Item Name: 	 {{ obj.Item_name }}</p>
 			<p>Item Description: {{ obj.Item_description  }}</p>
@@ -28,9 +29,8 @@
 		
 
 	{% empty %}
-		 
-
+		
 	{% endfor %}	
 </ul>
 <body>
- 	
+ 	{% endblock %}
