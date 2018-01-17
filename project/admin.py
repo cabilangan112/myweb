@@ -8,7 +8,7 @@ from .models import ItemLost, OwnerInfo, LocationLost,ReturnerInfo
 # Register your models here.
 
 class ItemLostAdmin(admin.ModelAdmin):
-    list_display = ('Item_name', 'Category', 'item_picture', 'Item_description','Location','Value','Time','Updated',)
+    list_display = ('Item_name', 'Category', 'image', 'Item_description','Location','Value','Time','Updated',)
 
 	
 	

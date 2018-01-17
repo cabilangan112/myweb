@@ -3,28 +3,19 @@
  <body >
  {% load static %}
  		        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-				<link rel="stylesheet" href="{% static 'css/nav.css' %}">
-				<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
- 
-<br><br>
-<br><br>
+			<link rel="stylesheet" href="{% static 'css/nav.css' %}">
+			<link rel="stylesheet" href="{% static 'css/w3.css' %}">
 <ul>
-
 	{% for obj in obj %}
-  <div class="w3-panel w3-card"  align="center">
-		<div> 
-		<frame> <p>{{ obj.User}} <small>  {{ obj.Updated|timesince }} ago</small></p>
-		<div>
-		<p><img src="{{ obj.MEDIA_URL }}{{ obj.item_picture.url }}" width="300px"></p>
-		<p>Item Category: {{ obj.Category }}</p>
-			<p>Item Name: 	 {{ obj.Item_name }}</p>
-			<p>Item Description: {{ obj.Item_description  }}</p>
-			<p>Lost Place: 		 {{ obj.Location.Lost_place }}</p>
-			<p>Lost Time & Date: {{ obj.Location.Time_lost }}  {{ obj.Location.Date_Lost }}</p>
+		<div   class="w3-panel w3-card"  align="center" >			 
+		  <strong><p>{{obj.User}}<small>   </strong> {{ obj.Updated|timesince }} ago</small></p>
+			<p><img src="{{ obj.MEDIA_URL }}{{ obj.image.url }}" width="90px"></img></p>
+				<p>Item Category: {{ obj.Category }}</p>
+				<p>Item Name: 	 {{ obj.Item_name }}</p>	
+				<p>Item Description: {{ obj.Item_description  }}</p>
+				<p>Lost Place: 		 {{ obj.Location.Lost_place }}</p>
+				<p>Lost Time & Date: {{ obj.Location.Time_lost }}  {{ obj.Location.Date_Lost }}</p>
 			<p>Owner :                 {{ obj.Owner.Last_name }} {{ obj.Owner.First_name }} {{ obj.Owner.Course_or_Stran }}   {{ obj.Owner.Year }}</p>
-</frame>
-			<br><br>
-			 
 		</div>
 	{% empty %}		
 	{% endfor %}	
@@ -32,7 +23,8 @@
 <body>
  	{% endblock %}
      <script type="text/javascript" src="{% static 'css/bootstrap.css' %}"> </script>
-	      <script type="text/javascript" src="{% static 'css/style.css' %}"> </script>
-		       <script type="text/javascript" src="{% static 'js/slim.min.js' %}"> </script>
-	      <script type="text/javascript" src="{% static 'js/tether.min.js' %}"> </script>
+     <script type="text/javascript" src="{% static 'css/w3.css' %}"> </script>
+     <script type="text/javascript" src="{% static 'css/style.css' %}"> </script>
+     <script type="text/javascript" src="{% static 'js/slim.min.js' %}"> </script>
+     <script type="text/javascript" src="{% static 'js/tether.min.js' %}"> </script>
      
