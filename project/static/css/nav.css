@@ -1,0 +1,28 @@
+&lt;ul class=&quot;nav&quot;&gt;
+    &lt;li id=&quot;settings&quot;&gt;
+        &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;settings.png&quot; /&gt;&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;#&quot;&gt;Application&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;#&quot;&gt;Board&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;search&quot;&gt;
+        &lt;form action=&quot;&quot; method=&quot;get&quot;&gt;
+            &lt;input type=&quot;text&quot; name=&quot;search_text&quot; id=&quot;search_text&quot; placeholder=&quot;Search&quot;/&gt;
+            &lt;input type=&quot;button&quot; name=&quot;search_button&quot; id=&quot;search_button&quot;&gt;&lt;/a&gt;
+        &lt;/form&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;options&quot;&gt;
+        &lt;a href=&quot;#&quot;&gt;Options&lt;/a&gt;
+        &lt;ul class=&quot;subnav&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Settings&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Application&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Board&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Options&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+ 
+&lt;script src=&quot;prefixfree-1.0.7.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;

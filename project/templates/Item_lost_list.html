@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% block content %} 
  <body >
-<br><br>
-<form align="right" class='form' method='GET' action='.'>
-	<input type='text' placeholder='Search..' name='q' value='{{ request.GET.q }}'>
-	<button class='btn btn-default' type='submit'>Search</button>
-</form>	
-<br><br>
+ {% load static %}
+ 		        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+				<link rel="stylesheet" href="{% static 'css/nav.css' %}">
+				<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
  
+<br><br>
+<br><br>
 <ul>
+
 	{% for obj in obj %}
-	
- <div class="card" align="center">
+  <div class="w3-panel w3-card"  align="center">
 		<div> 
 		<frame> <p>{{ obj.User}} <small>  {{ obj.Updated|timesince }} ago</small></p>
 		<div>
@@ -24,13 +24,15 @@
 			<p>Owner :                 {{ obj.Owner.Last_name }} {{ obj.Owner.First_name }} {{ obj.Owner.Course_or_Stran }}   {{ obj.Owner.Year }}</p>
 </frame>
 			<br><br>
-			<br><br>
+			 
 		</div>
-		
-
-	{% empty %}
-		
+	{% empty %}		
 	{% endfor %}	
 </ul>
 <body>
  	{% endblock %}
+     <script type="text/javascript" src="{% static 'css/bootstrap.css' %}"> </script>
+	      <script type="text/javascript" src="{% static 'css/style.css' %}"> </script>
+		       <script type="text/javascript" src="{% static 'js/slim.min.js' %}"> </script>
+	      <script type="text/javascript" src="{% static 'js/tether.min.js' %}"> </script>
+     
