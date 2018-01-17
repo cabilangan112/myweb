@@ -1,17 +1,17 @@
 div img{
 	height: 200px;
-    width: 50%;
+    width: 300px;
 }
 
 
 nav .p {
    position: absolute;
 }
- div.card {
+ div card {
 	 
     box-shadow: 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 30%;
+    width: 500px;
 	padding: 40%;
 	height: 60px;
 }
