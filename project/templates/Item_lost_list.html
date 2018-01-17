@@ -5,11 +5,12 @@
  		        <link rel="stylesheet" href="{% static 'css/style.css' %}">
 			<link rel="stylesheet" href="{% static 'css/nav.css' %}">
 			<link rel="stylesheet" href="{% static 'css/w3.css' %}">
-<ul align="center">
+<ul>
 	{% for obj in obj %}
-		<div   class="w3-panel w3-card"  >			 
+		<div   class="w3-panel w3-card"  align="center" >			 
 		  <strong><p>{{obj.User}}<small>   </strong> {{ obj.Updated|timesince }} ago</small></p>
-			<p><img src="/media/static/media/jack.png" width="300px"></p>
+			<p><img src="{{ obj.MEDIA_URL }}{{ obj.image.url}}"> </p>
+			<img src="/media/static/media/jack.png" width="300px">
 				<p>Item Category: {{ obj.Category }}</p>
 				<p>Item Name: 	 {{ obj.Item_name }}</p>	
 				<p>Item Description: {{ obj.Item_description  }}</p>

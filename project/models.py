@@ -17,7 +17,7 @@ class ItemLost(models.Model):
 	User					= models.ForeignKey(User)
 	Category				= models.CharField(max_length=120)
 	Item_name				= models.CharField(max_length=120)
-	image			        = models.ImageField(upload_to = 'media')
+	image			        = models.ImageField(upload_to = 'static/media')
 	Item_description 		= models.TextField(help_text='Item Description', null=True, blank=True)
 	Location                = models.ForeignKey('LocationLost', on_delete=models.SET_NULL, null=True)
 	Value 					= models.DecimalField('Peso amount', max_digits=8, decimal_places=2, blank=True, null=True)
