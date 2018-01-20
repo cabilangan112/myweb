@@ -8,8 +8,8 @@ from django.db.models.signals import pre_save
 from django.core.urlresolvers import reverse
 from datetime import date
 from datetime import time
- 
- 
+from django.core.mail import send_mail
+
 User = settings.AUTH_USER_MODEL
 
 
@@ -30,7 +30,19 @@ class ItemLost(models.Model):
 	
 	def __str__(self):
 		return self.Item_name
-
+	
+	def send_claim_email(self):
+		#print("Activation")
+		if self.Returned:
+			subject = 'Activate Account'
+			from_email = settings.DEFAULT_FROM_EMAIL
+			message = 'Activate your account here: '#%s'% path_
+			recipient_list = [self.user.email]
+			html_message = '<p>Activate your account here:</p> '#%s'% path_
+			print(html_message, recipient_list, message, from_email, subject)
+			#sent_mail = send_mail(subject, message, from_email, recipient_list, fail_silently=False, html_message=html_message)
+			sent_mail = False
+			return sent_mail
 	class Meta:
 		ordering = ['-Updated', '-Time']
 

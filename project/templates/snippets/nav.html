@@ -1,0 +1,30 @@
+<div class='container col-sm-12 text-center col-sm-offset-3'>
+	{% if request.user.is_authenticated %}
+		{% if request.user.is_superuser %}
+			<a href='{% url "home" %}'>Home</a> |
+			<a href='{% url "claimed" %}'>Claimed</a> |
+			<a href='{% url "locations:location" %}'>Locations</a> |
+			<a href='{% url "items:item" %}'>Items</a> |
+			<a href='{% url "profile:details" username=user.username %}'>{{ user.first_name }} {{ user.last_name }}</a> |
+			<a href='{% url "logout" %}'>Logout</a>
+			{% include 'snippets/search-snippet.html'%}
+		{% else %}
+			<a href='{% url "home" %}'>Home</a> |
+			<a href='{% url "claimed" %}'>Claimed</a> |
+			<a href='{% url "locations:list" %}'>Locations</a> |
+			<a href='{% url "items:list" %}'>Items</a> |
+			<a href='{% url "profile:detail" username=user.username %}'>{{ user.first_name }} {{ user.last_name }}</a> |
+			<a href='{% url "logout" %}'>Logout</a>
+			{% include 'snippets/search-snippet.html'%}
+		{% endif %}
+	{% else %}
+	 <div class="inner">
+		<a href='{% url "home" %}'>
+			<h3 class="masthead-brand">Welcome</h3>
+		</a>
+		<nav class="nav nav-masthead">
+			<a class="nav-link active btn" href='{% url "register" %}'>Register</a>
+		</nav>
+	</div>
+	{% endif %}
+</div>
