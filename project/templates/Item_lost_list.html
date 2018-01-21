@@ -6,9 +6,10 @@
 			<link rel="stylesheet" href="{% static 'css/nav.css' %}">
 			<link rel="stylesheet" href="{% static 'css/w3.css' %}">
 <ul>
-	{% for obj in obj %}
- 		{% for item in obj.item_set.all %}
+	{% for obj in object_list %}
+ 
 		{% if not obj.Returned %}
+ 
 <div class="w3-panel w3-card" style="
     width: 432px;
     margin-left: 400px;
@@ -17,18 +18,18 @@
 			<strong>{{obj.User}}</strong> 	<small> {{ obj.Updated|timesince }} ago</small></p>
 			<p><img src="{{ obj.MEDIA_URL }}{{ obj.image.url}}"> </p>
 				<p>Item Category: {{ obj.Category }}</p>
-				<p>Item Name: 	 {{ obj.Item_name }}</p>	
-				<p>Item Description: {{ obj.Item_description  }}</p>
-				<p>Lost Place: 		 {{ obj.Location.Lost_place }}</p>
-				<p>Lost Time & Date: {{ obj.Location.Time_lost }}  {{ obj.Location.Date_Lost }}</p>
-			<p>{% if obj.Returned %}Returned by: {{ obj.Returner.Last_name }} {{ obj.Returner.First_name }}{% else %}  Not Returned Yet{% endif %}</p>
+				<p>Item Name: 	 {{ item.Item_name }}</p>	
+				<p>Item Description: {{ item.Item_description  }}</p>
+				<p>Lost Place: 		 {{ obj.Lost_place }}</p>
+				<p>Lost Time & Date: {{ obj.Time_lost }}  {{ obj.Date_Lost }}</p>
+			<p>{% if obj.Returned %}Returned by: {{ obj.Last_name }} {{ obj.First_name }}{% else %}  Not Returned Yet{% endif %}</p>
 			
-			<p>Owner :                 {{ obj.Owner.Last_name }} {{ obj.Owner.First_name }} {{ obj.Owner.Course_or_Stran }}   {{ obj.Owner.Year }}</p>
+			<p>Owner :                 {{ obj.Last_name }} {{ obj.First_name }} {{ obj.Course_or_Stran }}   {{ obj.Year }}</p>
 	
 		</div>
 		 
- 			{% endif %}
-		{% endfor %}
+ 	 	{% endif %}
+	 
  	
 	{% endfor %}	
 </ul>

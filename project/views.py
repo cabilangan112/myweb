@@ -16,22 +16,24 @@ from django.views.generic import (ListView,DetailView,CreateView,UpdateView)
 class ItemLost_View(generic.ListView):
 	def get(self, request): 
 		query = self.request.GET.get('q')
-		ItemLost_exists = ItemLost.objects.filter(Returned=False).order_by("-Updated")[:10].exists()
-		qs = OwnerInfo.objects.all().order_by("-updated").search(query)
-		obj = ItemLost.objects.all()
-		context = {
-				'obj':obj,
-		
-				}
-		if ItemLost_exists and qs.exists():
-			obj = ItemLost.objects.all()
-			context = {
-					'obj':obj,
-		
-					}
-			return render(request, "Item_lost_list.html", context)
-		return render(request, "Item_lost_list.html", context)
+		item_exists = ItemLost.objects.filter(Returned=False).order_by("-Updated")[:10].exists()
+		item = ItemLost.objects.all() 
+		pl = LocationLost.objects.all() 
+		of = OwnerInfo.objects.all() 
+		ri = ReturnerInfo.objects.all() 
 
+		if item_exists and pl.exists():
+			return render(request, "Item_lost_list.html", {'object_list':item})
+			return render(request, "Item_lost_list.html", {'object_list':pl})
+			return render(request, "Item_lost_list.html", {'object_list':of})
+			return render(request, "Item_lost_list.html", {'object_list':ri})
+			
+		return render(request, "Item_lost_list.html", {'object_list':item})
+		return render(request, "Item_lost_list.html", {'object_list':pl})
+		return render(request, "Item_lost_list.html", {'object_list':of})
+		return render(request, "Item_lost_list.html", {'object_list':ri})
+		
+		
 class LostDetail(LoginRequiredMixin, DetailView):
 	def get_queryset(self):
 		return Item.objects.filter(user=self.request.user)
