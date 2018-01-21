@@ -8,13 +8,13 @@
 <ul>
 	{% for obj in obj %}
  
-		{% if not obj.Returned %}
+		{% if obj.Returned %}
  
 <div class="w3-panel w3-card" style="
-    width: 400px;
+    width: 432px;
     margin-left: 400px;
 	margin-bottom: 50px
-    " >		 
+    ">		 
 			<strong>{{obj.User}}</strong> 	<small> {{ obj.Updated|timesince }} ago</small></p>
 			<p><img src="{{ obj.MEDIA_URL }}{{ obj.image.url}}"> </p>
 				<p> Item Category: {{ obj.Category }}</p>

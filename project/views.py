@@ -16,36 +16,28 @@ from django.views.generic import (ListView,DetailView,CreateView,UpdateView)
 class ItemLost_View(generic.ListView):
 	def get(self, request): 
 		query = self.request.GET.get('q')
-		item_exists = ItemLost.objects.filter(Returned=False).order_by("-Updated")[:10].exists()
-		item = ItemLost.objects.all() 
-		pl = LocationLost.objects.all() 
-		of = OwnerInfo.objects.all() 
-		ri = ReturnerInfo.objects.all() 
-
-		if item_exists and pl.exists():
-			return render(request, "Item_lost_list.html", {'object_list':item})
-			return render(request, "Item_lost_list.html", {'object_list':pl})
-			return render(request, "Item_lost_list.html", {'object_list':of})
-			return render(request, "Item_lost_list.html", {'object_list':ri})
-			
-		return render(request, "Item_lost_list.html", {'object_list':item})
-		return render(request, "Item_lost_list.html", {'object_list':pl})
-		return render(request, "Item_lost_list.html", {'object_list':of})
-		return render(request, "Item_lost_list.html", {'object_list':ri})
-		
+		obj = ItemLost.objects.filter(Returned=False).order_by("-Updated")[:10].exists()
+		obj = ItemLost.objects.all() 
+		context = {
+				'obj':obj,
+			}
+		return render(request, "Item_lost_list.html", context)
 		
 class LostDetail(LoginRequiredMixin, DetailView):
 	def get_queryset(self):
 		return Item.objects.filter(user=self.request.user)
 
 
-class ReturnedView(ListView):
-	def get(self, request, *args, **kwargs):
-		if not request.user.is_authenticated():
-			return render(request, "index.html", {})
-		qs = ItemLost.objects.filter(Returned=True).order_by("-updated")[:10]
-		return render(request, " ", {'object_list':qs})
-
+class Returned_View(ListView):
+	def get(self, request): 
+		query = self.request.GET.get('q')
+		obj = ItemLost.objects.filter(Returned=True).order_by("-Updated")[:10].exists()
+		obj = ItemLost.objects.all() 
+		context = {
+				'obj':obj,
+			}
+		return render(request, "Returned.html", context)
+		
 class LostUpdate(UpdateView):
 	form_class = LostUpdateForm
 	template_name = 'items/detail-update.html'

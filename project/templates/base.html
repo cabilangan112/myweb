@@ -20,8 +20,8 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Grading system</a></li>
+      <li><a href="#">Library</a></li>
     </ul>
  <form class="navbar-form navbar-left" action='.'>
       <div class="form-group">
@@ -35,6 +35,17 @@
     </ul>
   </div>
 </nav>
+<div   align="center">
+	{% if request.user.is_authenticated %}
+		{% if request.user.is_superuser %}
+			<a href='{% url "Lost" %}'>Home</a> |
+			<a href=' {% url "Returned" %}'>Returned</a> |
+			<a href=' '>Item List</a> 
+ 
+		{% endif %}
+ 
+	{% endif %}
+</div>
  
 	{% if request.user.is_authenticated %}
 	<h1>Hi {{request.user.username|title}}</h1>
