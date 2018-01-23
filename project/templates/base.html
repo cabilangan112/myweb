@@ -36,15 +36,12 @@
   </div>
 </nav>
 <div   align="center">
-	{% if request.user.is_authenticated %}
-		{% if request.user.is_superuser %}
+ 
 			<a href='{% url "Lost" %}'>Home</a> |
 			<a href=' {% url "Returned" %}'>Returned</a> |
 			<a href=' '>Item List</a> 
  
-		{% endif %}
  
-	{% endif %}
 </div>
  
 	{% if request.user.is_authenticated %}

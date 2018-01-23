@@ -23,9 +23,12 @@ class ItemLost_View(generic.ListView):
 			}
 		return render(request, "Item_lost_list.html", context)
 		
-class LostDetail(LoginRequiredMixin, DetailView):
-	def get_queryset(self):
-		return Item.objects.filter(user=self.request.user)
+class LostDetail(DetailView):
+	model = ItemLost
+	template_name = "Item_Detail.html"	
+	def get_context_data(self, **kwargs):
+		context = super(LostDetail, self).get_context_data(**kwargs)
+		return context
 
 
 class Returned_View(ListView):
@@ -43,7 +46,7 @@ class LostUpdate(UpdateView):
 	template_name = 'items/detail-update.html'
 	
 	def get_queryset(self):
-		return ItemLost.objects.filter(user=self.request.user)
+		return ItemLost.objects.filter(User=self.request.User)
 
 	# context for html title
 	def get_context_data(self, *args, **kwargs):
